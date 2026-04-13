@@ -26,7 +26,8 @@ def search_games(game_title: str):
             "option": i+1,
             "id": game["id"],
             "name": game["name"],
-            "released": game["released"]
+            "released": game["released"],
+            "image": game["background_image"]
         })
 
     return filtered_games
