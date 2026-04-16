@@ -1,5 +1,5 @@
 from database.database import check_login, add_game_no_status, check_if_game_already_added, add_game_to_database, \
-    get_game_id
+    get_game_id, show_user_backlog
 from database.init import init_db
 from database import *
 from generateHTML import generate_html
@@ -74,7 +74,7 @@ while True:
                             continue
 
                 elif opt == 2:
-                    pass
+                    show_user_backlog(user_id)
                 else:
                     print("Informe uma opção válida.")
         else:

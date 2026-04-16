@@ -38,3 +38,26 @@ def get_game_id(game_rawg_id):
     result = cursor.fetchone()
 
     return result
+
+def show_user_backlog(user_id):
+    select_query = """SELECT 
+                      game_id,
+                      user_review,
+                      game_status,
+                      game_rating,
+                      playtime,
+                      date_started,
+                      date_finished
+                      FROM user_backlog WHERE user_id = %s"""
+    cursor.execute(select_query, (user_id,))
+    result = cursor.fetchall()
+
+    print("Game: | review | status | rating | playtime | date started | date finished")
+    for game in result:
+        #print(game)
+        cursor.execute("SELECT name FROM games WHERE id = %s", (game[0],))
+        game_title = cursor.fetchone()
+        print(game_title[0], end=" | ")
+        for i in range(1, len(game)):
+            print(game[i], end=" | ")
+        print()
